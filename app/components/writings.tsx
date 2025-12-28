@@ -7,7 +7,7 @@ const Writings = () => {
         <h1 className="font-semibold italic">
           Writings
         </h1>
-        <BlogPosts />
+        <BlogPosts limit={3} />
       </div>
     </section>
 
