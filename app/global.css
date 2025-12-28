@@ -5,6 +5,13 @@
   color: #fefefe;
 }
 
+@theme {
+  --font-family-serif: var(--font-playfair);
+  --font-family-sans: var(--font-manrope);
+
+  --spacing-figma-gap: 10px;
+}
+
 :root {
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;

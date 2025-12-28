@@ -7,6 +7,23 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
+import { Manrope, Playfair, Playfair_Display } from 'next/font/google'
+
+// Configure Playfair Display (Serif)
+const playfair = Playfair({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
+  style: ['normal', 'italic'],
+})
+
+// Configure Manrope (Sans-serif)
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-manrope',
+  style: ['normal'],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -48,11 +65,11 @@ export default function RootLayout({
       lang="en"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
-        GeistSans.variable,
-        GeistMono.variable
+        playfair.variable,
+        manrope.variable
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+      <body className={`font-serif antialiased max-w-xl mx-4 mt-8 lg:mx-auto text-sm tracking-tight lowercase`}>
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
