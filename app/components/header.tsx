@@ -9,9 +9,9 @@ const MainHeader = () => {
             <h1 className="font-semibold italic">
               sagar tamang ~ <span className="text-xs">सागर तामाङ</span>
             </h1>
-            <p className="font-semibold italic text-sm">
+            <div className="font-semibold italic text-sm">
               <BoxedText text={"product,ai,research,web,design,elt"} />
-            </p>
+            </div>
             <p className="italic">
               i <span className="not-italic font-medium">build</span> <span className="underline">fast</span>
             </p>
