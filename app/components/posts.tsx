@@ -35,7 +35,7 @@ export function BlogPosts({ limit }: BlogPostsProps) {
               {formatDate(post.metadata.publishedAt, false)}
             </p>
             <p className="text-neutral-900 dark:text-neutral-100 tracking-tight group-hover:underline decoration-neutral-400 underline-offset-4">
-              {post.metadata.title}asdfjdsjflkdsjlksjflkssd
+              {post.metadata.title}
             </p>
           </div>
         </Link>
