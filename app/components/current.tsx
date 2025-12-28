@@ -24,9 +24,9 @@ const Current = () => {
               twospoon.ai
             </a>
           </span>
-          , building intelligent products that is both scalable and fast. master @ iit-patna and iit-ranchi.</p>
+          , building intelligent products that are both scalable and fast. research aptitude with 4 best papers and 20+ citations on google scholar. bachelors' gold medalist, and present student @ IIT Patna and IIIT Ranchi.</p>
         <p>enjoy coding, content creation, writing, superbikes, and reading ancient greek texts.</p>
-        <p>i can build anything.</p>
+        <p>i can build <span className="italic font-semibold">anything.</span></p>
       </div>
     </section>
   )
