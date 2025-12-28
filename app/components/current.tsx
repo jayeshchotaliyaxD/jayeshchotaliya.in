@@ -24,7 +24,7 @@ const Current = () => {
               twospoon.ai
             </a>
           </span>
-          , building intelligent products that are both scalable and fast. research aptitude with 4 best papers and 20+ citations on 
+          , building intelligent systems that are both scalable and fast. research aptitude with 4 best papers and 20+ citations on 
           {' '}
           <a target="_blank" 
             rel="noopener noreferrer"
@@ -33,7 +33,7 @@ const Current = () => {
           >
           google scholar
           </a>
-          . bachelors' gold medalist, and present student @ IIT Patna and IIIT Ranchi.</p>
+          . bachelors' gold medalist. masters student @ IIT Patna and IIIT Ranchi.</p>
         <p>enjoy coding, content creation, writing, superbikes, and reading ancient greek texts.</p>
         <p>i can build <span className="italic font-semibold">anything.</span></p>
       </div>
