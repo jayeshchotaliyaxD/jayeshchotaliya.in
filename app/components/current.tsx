@@ -24,7 +24,16 @@ const Current = () => {
               twospoon.ai
             </a>
           </span>
-          , building intelligent products that are both scalable and fast. research aptitude with 4 best papers and 20+ citations on google scholar. bachelors' gold medalist, and present student @ IIT Patna and IIIT Ranchi.</p>
+          , building intelligent products that are both scalable and fast. research aptitude with 4 best papers and 20+ citations on 
+          {' '}
+          <a target="_blank" 
+            rel="noopener noreferrer"
+            href="https://scholar.google.com/citations?hl=en&user=3mS0Y4wAAAAJ"
+            className="underline hover:decoration-neutral-400 underline-offset-4"
+          >
+          google scholar
+          </a>
+          . bachelors' gold medalist, and present student @ IIT Patna and IIIT Ranchi.</p>
         <p>enjoy coding, content creation, writing, superbikes, and reading ancient greek texts.</p>
         <p>i can build <span className="italic font-semibold">anything.</span></p>
       </div>

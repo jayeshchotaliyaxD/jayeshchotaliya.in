@@ -10,14 +10,14 @@ const Contact = () => {
           <a 
             href="/resume.pdf" 
             target="_blank"
-            className="underline decoration-neutral-400 underline-offset-4 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors"
+            className="underline hover:decoration-neutral-400 underline-offset-4 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors"
           >
             resume
           </a> or Book a slot at {' '}
           <a target="_blank" 
             rel="noopener noreferrer"
             href="https://cal.com/sagar-tamang"
-            className="underline"
+            className="underline hover:decoration-neutral-400 underline-offset-4"
           >Cal.com</a>
         </p>
       </div>

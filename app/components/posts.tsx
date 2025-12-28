@@ -34,7 +34,7 @@ export function BlogPosts({ limit }: BlogPostsProps) {
             <p className="text-neutral-600 dark:text-neutral-400 mr-4 md:mr-10 tabular-nums shrink-0">
               {formatDate(post.metadata.publishedAt, false)}
             </p>
-            <p className="text-neutral-900 dark:text-neutral-100 tracking-tight group-hover:underline decoration-neutral-400 underline-offset-4">
+            <p className="text-neutral-900 dark:text-neutral-100 tracking-tight underline hover:decoration-neutral-400 underline-offset-4">
               {post.metadata.title}
             </p>
           </div>
@@ -45,21 +45,9 @@ export function BlogPosts({ limit }: BlogPostsProps) {
       {showViewAll && (
         <Link
           href="/blog"
-          className="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          className="inline-flex items-center underline hover:decoration-neutral-400 underline-offset-4"
         >
           Read all writings
-          <svg
-            className="w-4 h-4 ml-1"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
         </Link>
       )}
     </div>
