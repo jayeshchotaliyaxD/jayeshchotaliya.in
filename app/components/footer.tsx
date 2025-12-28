@@ -55,7 +55,7 @@ const socialLinks = [
   { name: 'instagram', url: 'https://www.instagram.com/sagar_builds/', icon: InstagramIcon },
   { name: 'github', url: 'https://github.com/SAGAR-TAMANG', icon: GithubIcon },
   { name: 'scholar', url: 'https://scholar.google.com/citations?hl=en&user=3mS0Y4wAAAAJ', icon: ScholarIcon },
-  { name: 'source', url: 'https://github.com/SAGAR-TAMANG/sagartamang.com', icon: CodeIcon },
+  // { name: 'source', url: 'https://github.com/SAGAR-TAMANG/sagartamang.com', icon: CodeIcon },
 ]
 
 export default function Footer() {
@@ -77,7 +77,7 @@ export default function Footer() {
         ))}
       </ul>
       <p className="mt-8 text-neutral-600 dark:text-neutral-300 text-sm">
-        © {new Date().getFullYear()} MIT Licensed | built by sagar
+        © {new Date().getFullYear()} MIT Licensed | find code <a className="underline" rel="noopener noreferrer" aria-label={"source-code"} target="_blank" href="https://github.com/SAGAR-TAMANG/sagartamang.com">here</a> | built by sagar
       </p>
     </footer>
   )
