@@ -22,7 +22,7 @@ export function Projects({ limit }: ProjectsProps) {
   let displayedProjects = limit ? sortedProjects.slice(0, limit) : sortedProjects
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-figma-inside-gap">
       {displayedProjects.map((project) => {
         const techStack = project.metadata.tech
           ? project.metadata.tech.split(',').map((t) => t.trim())
@@ -56,7 +56,7 @@ export function Projects({ limit }: ProjectsProps) {
                 </p>
               </div>
 
-              <p className="text-neutral-600 dark:text-neutral-400 line-clamp-2 mb-3">
+              <p className="text-neutral-600 dark:text-neutral-400 line-clamp-2 mb-2">
                 {project.metadata.summary}
               </p>
 
@@ -79,7 +79,7 @@ export function Projects({ limit }: ProjectsProps) {
       {limit && (
         <Link
           href="/projects"
-          className="inline-flex items-center font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mt-2"
+          className="inline-flex items-center font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
         >
           View all projects
           <svg

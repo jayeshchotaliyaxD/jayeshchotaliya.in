@@ -27,7 +27,7 @@ export function BlogPosts({ limit }: BlogPostsProps) {
       {displayedBlogs.map((post) => (
         <Link
           key={post.slug}
-          className="flex flex-col space-y-1 mb-4 group"
+          className="flex flex-col gap-figma-inside-gap group"
           href={`/blog/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
@@ -45,7 +45,7 @@ export function BlogPosts({ limit }: BlogPostsProps) {
       {showViewAll && (
         <Link
           href="/blog"
-          className="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mt-2"
+          className="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
         >
           Read all writings
           <svg
