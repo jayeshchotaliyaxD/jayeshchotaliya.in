@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { formatDate, getProjects } from 'app/projects/utils'
+import BoxedText from './boxed-text'
 
 // 1. Define Props to make the limit optional
 type ProjectsProps = {
@@ -62,12 +63,7 @@ export function Projects({ limit }: ProjectsProps) {
 
               <div className="flex flex-wrap gap-2 mt-auto">
                 {techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 rounded-sm"
-                  >
-                    {tech}
-                  </span>
+                  <BoxedText key={tech} text={tech} />
                 ))}
               </div>
             </div>

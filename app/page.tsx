@@ -4,6 +4,7 @@ import Previous from './components/previous'
 import Writings from './components/writings'
 import { Projects } from './components/projects'
 import Builds from './components/builds'
+import Contact from './components/contact'
 
 export default function Page() {
   return (
@@ -13,6 +14,7 @@ export default function Page() {
       <Previous />
       <Writings />
       <Builds />
+      <Contact />
     </div>
   )
 }
