@@ -32,7 +32,7 @@ export function Projects({ limit }: ProjectsProps) {
         return (
           <Link
             key={project.slug}
-            className="group flex flex-col md:flex-row gap-4 items-start"
+            className="group flex flex-col md:flex-row md:gap-4 items-start mb-4 md:mb-0"
             href={`/projects/${project.slug}`}
           >
             <div className="w-full md:w-40 shrink-0 relative aspect-video md:aspect-[4/3] rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-800">
@@ -57,7 +57,7 @@ export function Projects({ limit }: ProjectsProps) {
                 </p>
               </div>
 
-              <p className="text-neutral-600 dark:text-neutral-400 line-clamp-2 mb-2">
+              <p className="text-neutral-600 dark:text-neutral-400 line-clamp-2 mb-1">
                 {project.metadata.summary}
               </p>
 
