@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 const Current = () => {
   return (
     <section>
@@ -6,13 +8,21 @@ const Current = () => {
           Current
         </h1>
         <p>ai engineer at{' '}
+          <span className="inline-flex align-middle bg-white text-black rounded-sm px-0.5 py-0 hover:cursor-pointer hover:bg-white/90 active:bg-white/70 transition leading-4">
+            <Image 
+              src={"/leapx-ai-favicon.svg"}
+              alt="favicon" 
+              height={10}
+              width={10} 
+            />
           <a target="_blank" 
             rel="noopener noreferrer"
             href="https://twospoon.ai/"
-            className="bg-white text-black rounded-sm px-1 hover:cursor-pointer hover:bg-white/90 active:bg-white/70 transition"
-          >
+            className=""
+            >
             twospoon.ai
           </a>
+          </span>
           , building intelligent products that is both scalable and fast. master @ iit-patna and iit-ranchi.</p>
         <p>enjoy coding, content creation, writing, superbikes, and reading ancient greek texts.</p>
         <p>i can build anything.</p>
