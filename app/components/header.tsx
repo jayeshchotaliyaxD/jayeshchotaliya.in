@@ -7,7 +7,7 @@ const MainHeader = () => {
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-figma-inside-gap">
             <h1 className="font-semibold italic">
-              sagar tamang ~ <span className="text-xs">सागर तामाङ</span>
+              sagar tamang ~ <span className="text-xs inline-flex align-bottom leading-4">सागर तामाङ</span>
             </h1>
             <div className="font-semibold italic text-sm">
               <BoxedText text={"product,ai,research,web,design,elt"} />
