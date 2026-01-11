@@ -95,6 +95,14 @@ cloudflared tunnel --url http://localhost:3000
 
 ### 💡 Pro Tips
 
+**🌍 SSH from Anywhere (Tailscale)**
+If you aren't on the same WiFi as your phone (e.g., you are at a cafe), the local IP won't work.
+
+1. Install the **Tailscale App** on both your Android phone and your Laptop.
+2. Log in to both with the same account to create a secure mesh tunnel.
+3. Use the **Tailscale IP** (usually starts with `100.x.x.x`) instead of the WiFi IP.
+Now you can SSH into your phone from anywhere in the world!
+
 **🚫 Prevent the App from Sleeping**
 Android kills background apps to save battery. To stop this:
 
