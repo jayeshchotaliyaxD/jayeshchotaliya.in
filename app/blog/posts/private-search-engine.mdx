@@ -1,0 +1,197 @@
+---
+title: 'Hosting Private Search Engine on Phone'
+publishedAt: '2026-01-12'
+summary: 'Turn your Android phone into a private, globally accessible search engine server using Termux, PM2, and Cloudflare Tunnels.'
+---
+
+# SearXNG on Android (Termux via Ubuntu) - The Complete Guide
+
+This guide covers how to install SearXNG inside an Ubuntu container on Android (Termux), run it in the background using PM2, and expose it to the public internet using Cloudflare Tunnels.
+
+## Part 1: Installation from Scratch
+
+### 1. Enter Ubuntu Container
+Ensure you are inside your Ubuntu environment in Termux:
+```bash
+proot-distro login ubuntu
+
+```
+
+### 2. Install System Dependencies
+
+Update repositories and install Python, Git, and build tools (needed for compilation).
+
+```bash
+apt update && apt install -y \
+    python3-dev python3-venv git build-essential \
+    libxslt-dev zlib1g-dev libffi-dev libssl-dev \
+    nodejs npm nano curl wget
+
+```
+
+### 3. Clone and Setup Environment
+
+Download the source code and set up a virtual environment to keep things clean.
+
+```bash
+# Clone repository
+cd ~
+git clone https://github.com/searxng/searxng.git
+cd searxng
+
+# Create virtual environment
+python3 -m venv searx-env
+
+# Activate it
+source searx-env/bin/activate
+
+```
+
+### 4. Install Python Dependencies (The "Safe" Way)
+
+We install dependencies manually first to avoid build isolation errors.
+
+```bash
+# Install build tools and missing library
+pip install -U pip setuptools wheel pyyaml msgspec
+
+# Install project requirements
+pip install -r requirements.txt
+
+# Install SearXNG in editable mode without isolation
+pip install --no-build-isolation -e .
+
+```
+
+### 5. Configuration (Crucial Steps)
+
+We need to generate a secret key and allow external access (so your laptop/LAN can see it).
+
+```bash
+# 1. Generate Secret Key
+sed -i "s/ultrasecretkey/$(openssl rand -hex 16)/g" searx/settings.yml
+
+# 2. Allow LAN Access (Listen on 0.0.0.0 instead of 127.0.0.1)
+sed -i 's/bind_address: "127.0.0.1"/bind_address: "0.0.0.0"/g' searx/settings.yml
+
+```
+
+### 6. Test Run
+
+Run the server manually to ensure it works.
+
+```bash
+python searx/webapp.py
+
+```
+
+* **Test:** Open `http://<PHONE_IP>:8888` on your laptop.
+* **Stop:** Press `Ctrl + C` to stop.
+
+---
+
+## Part 2: Run in Background with PM2
+
+Running `python searx/webapp.py` stops if you close Termux. We will use PM2 (a Node.js process manager) to keep it alive forever.
+
+### 1. Install PM2
+
+Since we already installed `nodejs` and `npm` in step 2:
+
+```bash
+npm install -g pm2
+
+```
+
+### 2. Start SearXNG with PM2
+
+We must tell PM2 to use the Python **inside our virtual environment**, not the system Python.
+
+Ensure you are in the `~/searxng` directory:
+
+```bash
+pm2 start searx/webapp.py --name "searxng" --interpreter ./searx-env/bin/python
+
+```
+
+### 3. PM2 Commands
+
+* **Check status:** `pm2 status`
+* **View logs:** `pm2 logs searxng`
+* **Stop server:** `pm2 stop searxng`
+* **Restart server:** `pm2 restart searxng`
+
+---
+
+## Part 3: Expose to Public Internet (Cloudflare Tunnel)
+
+This allows you to access your search engine from anywhere (e.g., `search.yourdomain.com`) without opening router ports.
+
+### 1. Install Cloudflared (ARM64)
+
+Download the ARM64 binary compatible with Android devices.
+
+```bash
+cd ~
+wget [https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64)
+chmod +x cloudflared-linux-arm64
+mv cloudflared-linux-arm64 /usr/local/bin/cloudflared
+
+```
+
+### 2. Login to Cloudflare
+
+Run this command and copy the URL into your browser to authorize your domain.
+
+```bash
+cloudflared tunnel login
+
+```
+
+### 3. Create a Tunnel
+
+Replace `my-searx-tunnel` with any name you want.
+
+```bash
+cloudflared tunnel create my-searx-tunnel
+
+```
+
+*Copy the **Tunnel ID** shown in the output.*
+
+### 4. Route DNS
+
+Connect the tunnel to your domain (e.g., `search.tamang.com`).
+
+```bash
+# Syntax: cloudflared tunnel route dns <Tunnel-Name> <Domain>
+cloudflared tunnel route dns my-searx-tunnel search.yourdomain.com
+
+```
+
+### 5. Run the Tunnel
+
+This forwards your local port (8888) to the Cloudflare domain.
+
+```bash
+cloudflared tunnel run --url http://localhost:8888 my-searx-tunnel
+
+```
+
+### 6. (Optional) Run Cloudflare with PM2
+
+To keep the tunnel running in the background alongside SearXNG:
+
+```bash
+pm2 start cloudflared --name "tunnel" -- tunnel run --url http://localhost:8888 my-searx-tunnel
+
+```
+
+### Final Status Check
+
+Run `pm2 status`. You should see two green items:
+
+1. `searxng` (The Python Server)
+2. `tunnel` (The Cloudflare connection)
+
+You now have a private, self-hosted search engine running on your phone, accessible from anywhere in the world!
