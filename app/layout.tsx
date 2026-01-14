@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 import { Manrope, Playfair, Playfair_Display } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // Configure Playfair Display (Serif)
 const playfair = Playfair({
@@ -112,6 +113,7 @@ export default function RootLayout({
           <Footer />
           <Analytics />
           <SpeedInsights />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''} />
         </main>
       </body>
     </html>
