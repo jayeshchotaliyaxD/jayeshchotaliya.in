@@ -1,0 +1,118 @@
+---
+title: 'ssh from anywhere around the world (tailscale)'
+publishedAt: '2026-01-14'
+summary: 'Turn your Android phone into a globally accessible Linux server using Termux and Tailscale—no port forwarding required.'
+---
+
+# How to SSH into your Android Phone from Anywhere (No Public IP Needed)
+
+Imagine this: Your main Android workstation (or test device) is sitting at home in **Bangalore**, but you are currently travelling through **North-East India**. You need to access a file or run a script on that phone *right now*.
+
+Usually, SSH works fine when you are on the same WiFi. But the moment you leave the house, that connection breaks. You aren't going to set up complex port forwarding or buy a static public IP for a phone.
+
+Here is the "hacker" way to solve this using **Tailscale** and **Termux**.
+
+---
+
+## The Stack
+
+We are using two tools to make this happen:
+
+1. **Termux:** A powerful terminal emulator for Android (basically Linux in your pocket).
+2. **Tailscale:** A mesh VPN that creates a secure private network between your devices, no matter where they are in the world.
+
+---
+
+## Step 1: Prepare the Android Device (The "Server")
+
+First, we need to turn your Android phone into a server that listens for connections.
+
+1. **Install Termux** from the Play Store (or F-Droid).
+2. Open Termux and update the package list:
+```bash
+pkg update && pkg upgrade
+
+```
+
+
+3. **Install OpenSSH:**
+```bash
+pkg install openssh
+
+```
+
+
+4. **Set a Password:**
+You need a password to log in remotely. Run this and choose something secure:
+```bash
+passwd
+
+```
+
+
+5. **Find your Username:**
+Android assigns a specific username to the Termux app. Run this command and note down the result (it usually looks like `u0_a255`):
+```bash
+whoami
+
+```
+
+
+6. **Start the SSH Server:**
+```bash
+sshd
+
+```
+
+
+*Note: You need to run `sshd` every time you restart Termux unless you set up a boot script.*
+
+---
+
+## Step 2: Create the Tunnel (Tailscale)
+
+Now we need to connect your phone and your laptop to the same virtual network.
+
+1. Install the **Tailscale app** on your Android phone and log in.
+2. Install **Tailscale** on your laptop (Mac/Windows/Linux) and log in with the **same account**.
+3. On your Android phone, tap the toggle to make it "Active".
+4. Copy the **IP Address** shown at the top of the Tailscale app on your phone. It will start with `100.x.x.x`.
+
+---
+
+## Step 3: The Connection (The "Magic" Part)
+
+This is where most people get stuck.
+
+On standard Linux servers (like AWS EC2), SSH listens on **port 22**.
+**However, Android does not allow user-installed apps (like Termux) to use ports below 1024.**
+
+So, Termux listens on **port 8022** by default.
+
+**The Command:**
+Open the terminal on your laptop and run:
+
+```bash
+ssh -p 8022 <your_termux_username>@<tailscale_ip>
+
+```
+
+**Example:**
+If your username is `u0_a255` and your Tailscale IP is `100.88.92.11`, you would type:
+
+```bash
+ssh -p 8022 u0_a255@100.88.92.11
+
+```
+
+Enter the password you set in Step 1, and **BOOM**. You are now inside your Android shell, fully remote, from anywhere in the world.
+
+---
+
+## Why this is awesome
+
+* **Static IP:** The Tailscale IP (`100.x`) stays the same for that device, so you can save it in your SSH config.
+* **Secure:** Tailscale uses WireGuard under the hood. It’s encrypted and private.
+* **Zero Config:** No router settings, no firewall headaches.
+
+Now, go build something cool.
