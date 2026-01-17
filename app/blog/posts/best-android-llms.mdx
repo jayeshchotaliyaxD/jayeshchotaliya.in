@@ -1,0 +1,99 @@
+---
+title: 'Can Your Old Phone Run AI? The Ultimate Compatibility List'
+publishedAt: '2026-01-17'
+summary: 'Stop crashing your device with models that are too big. Here is the definitive tier-list of open-source models (DeepSeek, Llama, Qwen) that actually work on Android, sorted by RAM size.'
+---
+
+# AI on Android: The Ultimate Compatibility List
+
+So you want to run AI on your old phone? Most models (like the new GPT-OSS 20B) are too big and will crash your device.
+
+Here is the list of models that **actually** work, categorized by how much RAM your phone has.
+
+---
+
+### 🟢 Tier 1: The "Potato" Phone (3GB - 4GB RAM)
+*These models are tiny, fast, and will run on almost anything.*
+
+**1. Qwen 2.5 (0.5B)**
+The speed king. It's not a genius, but it replies instantly.
+```bash
+ollama run qwen2.5:0.5b
+
+```
+
+**2. Llama 3.2 (1B)**
+Meta's optimized mobile model. Surprisingly smart for its size.
+
+```bash
+ollama run llama3.2:1b
+
+```
+
+**3. TinyLlama (1.1B)**
+The classic. Good for basic chat and testing.
+
+```bash
+ollama run tinyllama
+
+```
+
+---
+
+### 🟡 Tier 2: The Sweet Spot (6GB RAM)
+
+*This is where you get real intelligence. These can code, summarize, and reason.*
+
+**1. DeepSeek Coder (1.3B)**
+The best for coding questions. If you want your phone to write Python, use this.
+
+```bash
+ollama run deepseek-coder:1.3b
+
+```
+
+**2. Qwen 2.5 (1.5B)**
+A perfect balance of speed and smarts. Great for general questions.
+
+```bash
+ollama run qwen2.5:1.5b
+
+```
+
+**3. Phi-3.5 Mini (3.8B) – *Warning: Heavy***
+Microsoft's model. It's very smart but might be slow on older chips. Give it a try!
+
+```bash
+ollama run phi3.5
+
+```
+
+---
+
+### 🔴 Tier 3: The Danger Zone (8GB+ RAM Only)
+
+*Only run these if you have a newer phone or a gaming phone.*
+
+**1. Llama 3.2 (3B)**
+The standard for mobile AI right now.
+
+```bash
+ollama run llama3.2
+
+```
+
+**2. Mistral (7B) - *Heavily Quantized***
+You might be able to squeeze this in if you close all background apps.
+
+```bash
+ollama run mistral
+
+```
+
+---
+
+### Quick Troubleshooting
+
+* **"Killed" Error:** Your phone ran out of RAM. Try a smaller model from Tier 1.
+* **Slow Speed:** This is normal on old CPUs. Be patient!
+* **Heat:** Your phone will get hot. That means it's working.
