@@ -1,0 +1,116 @@
+---
+title: 'How I Ran an 18GB AI Image-gen Model on My Android Phone (Offline)'
+publishedAt: '2026-01-24'
+summary: 'You don't need a $2,000 GPU or a cloud subscription. This is the complete step-by-step blueprint to running Stable Diffusion XL Turbo on bare metal using Termux and OnnxStream.'
+---
+
+# 🚀 Run SDXL Turbo Locally on Android (Offline)
+
+This guide turns your Android phone into an offline AI image generator using **Termux** and **OnnxStream**. 
+No cloud. No internet required after setup. No subscription fees.
+
+> **⚠️ Requirements:**
+> * **RAM:** 4GB minimum (8GB+ recommended).
+> * **Storage:** ~20GB free space (The model weights are heavy).
+> * **Time:** ~15-30 minutes (Compilation takes time).
+
+---
+
+## Phase 1: Setup the Linux Environment 🐧
+
+We need a full Linux environment inside Android to compile the engine.
+
+1.  **Open Termux** and update the repositories:
+    ```bash
+    pkg update && pkg upgrade -y
+    ```
+
+2.  Install **proot-distro** and **Ubuntu**:
+    ```bash
+    pkg install proot-distro
+    proot-distro install ubuntu
+    ```
+
+3.  Login to Ubuntu:
+    ```bash
+    proot-distro login ubuntu
+    ```
+
+---
+
+## Phase 2: Build the Engine 🛠️
+
+Now we compile the **OnnxStream** inference engine from source code.
+
+1.  **Install Build Tools** (Copy/Paste this entire block):
+    ```bash
+    apt update && apt install -y build-essential cmake git wget git-lfs
+    git lfs install
+    ```
+
+2.  **Clone the Engine Repository:**
+    ```bash
+    git clone [https://github.com/vitoplantamura/OnnxStream](https://github.com/vitoplantamura/OnnxStream)
+    cd OnnxStream/src
+    ```
+
+3.  **Compile with CMake:**
+    *Note: We use `-DMAX_SPEED=OFF` to prevent phone overheating. If you are brave, change it to `ON`.*
+    
+    ```bash
+    mkdir build && cd build
+    cmake -DMAX_SPEED=OFF ..
+    cmake --build . --config Release
+    ```
+    *(Wait for this to finish. It may take 5-10 minutes depending on your phone's CPU).*
+
+---
+
+## Phase 3: Download the Model Weights 🧠
+
+We need the specific **OnnxStream-compatible** weights for SDXL Turbo. 
+
+1.  **Navigate back to home:**
+    ```bash
+    cd ~
+    ```
+
+2.  **Download the Weights (~15GB):**
+    *We use the `depth=1` flag to avoid downloading the entire git history.*
+    
+    ```bash
+    git clone --depth=1 [https://huggingface.co/AeroX2/stable-diffusion-xl-turbo-1.0-onnxstream](https://huggingface.co/AeroX2/stable-diffusion-xl-turbo-1.0-onnxstream)
+    ```
+    *(Make sure you are on WiFi. This will take a while.)*
+
+---
+
+## Phase 4: Run the Generator 🎨
+
+Once the download finishes, you are ready to generate.
+
+1.  **Go to your build folder:**
+    ```bash
+    cd ~/OnnxStream/src/build
+    ```
+
+2.  **Run the Command:**
+    Replace `"Cyberpunk City"` with your own prompt.
+    
+    ```bash
+    ./sd --turbo --models-path ~/stable-diffusion-xl-turbo-1.0-onnxstream --prompt "Cyberpunk City, Neon Lights, 8k"
+    ```
+
+### 💡 Pro Tips
+* **Performance:** The first generation is always slower (it builds lookup tables). Subsequent images will be faster.
+* **Heat:** Your phone will get hot. This is normal. It's running on bare metal.
+* **Output:** The image will be saved in the `build` folder as `sd_output.png`.
+* **Move Image to Gallery:** To see the image in your Android Gallery, move it to your storage:
+    ```bash
+    cp sd_output.png /sdcard/Download/
+    ```
+
+---
+**Troubleshooting:**
+* *Error "Killed":* You ran out of RAM. Close other apps.
+* *Error "XNNPACK not found":* Ensure you ran `git clone` correctly and internet was active during build.
