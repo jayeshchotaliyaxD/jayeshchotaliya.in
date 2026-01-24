@@ -1,0 +1,91 @@
+---
+title: 'Running n8n Locally on Android via Termux'
+publishedAt: '2026-01-25'
+summary: 'Turn your Android phone into a powerful automation server. Learn how to bypass Termux limitations using proot-distro to run n8n flawlessly.'
+---
+
+# How to Run n8n Locally on Android (Termux + Ubuntu)
+
+This guide shows you how to turn your Android device into a portable automation server by running **n8n** inside an Ubuntu environment using **Termux**.
+
+## Step 1: Install Termux
+1. Download **Termux** (preferably from F-Droid or the GitHub releases to ensure you have the latest version).
+2. Open Termux and update the base packages:
+    ```bash
+    pkg update && pkg upgrade -y
+    ```
+
+## Step 2: Install Ubuntu via Proot-Distro
+
+We use `proot-distro` to create a standard Linux environment where Node.js modules can compile without Android-specific errors.
+
+1. **Install the distro manager:**
+    ```bash
+    pkg install proot-distro -y
+    ```
+
+
+2. **Install Ubuntu:**
+    ```bash
+    proot-distro install ubuntu
+    ```
+
+
+3. **Login to the Ubuntu shell:**
+    ```bash
+    proot-distro login ubuntu
+    ```
+
+
+## Step 3: Setup Node.js & Build Tools
+
+Now that you are inside Ubuntu (`root@ubuntu`), you need to install the environment for n8n.
+
+1. **Update Ubuntu packages:**
+    ```bash
+    apt update && apt upgrade -y
+    ```
+
+
+2. **Install Curl and Build Essentials:**
+    ```bash
+    apt install curl sudo build-essential python3 -y
+    ```
+
+
+3. **Install Node.js (LTS Version):**
+    ```bash
+    curl -fsSL [https://deb.nodesource.com/setup_20.x](https://deb.nodesource.com/setup_20.x) | sudo -E bash -
+    apt install -y nodejs
+    ```
+
+
+
+## Step 4: Install and Run n8n
+
+1. **Install n8n globally:**
+    ```bash
+    npm install n8n -g
+    ```
+
+
+*(This may take a few minutes as it compiles native modules like SQLite for your phone's ARM64 architecture.)*
+2. **Launch n8n:**
+    ```bash
+    n8n start
+    ```
+
+## Step 5: Access the Dashboard
+
+Once you see the message `n8n ready`, the server is live!
+
+1. Open any browser on your phone (Chrome, Kiwi, etc.).
+2. Navigate to: `http://localhost:5678`
+3. If you want to access it from a laptop on the same Wi-Fi, find your phone's IP in a new Termux session (type `ifconfig`) and go to `http://<your-phone-ip>:5678`.
+
+---
+
+### Pro-Tips for Your Build
+
+* **Prevent Crashes:** Android often kills background apps. In Termux, run `termux-wake-lock` and disable battery optimization for the Termux app in your phone settings.
+* **Local Automations:** You can now use n8n to trigger local Python scripts, manage your phone's files, or even connect it to your local **Ollama/DeepSeek** setup for private AI workflows!
