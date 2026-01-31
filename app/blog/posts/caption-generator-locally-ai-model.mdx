@@ -1,6 +1,6 @@
 ---
 title: 'Automating High-Retention Subtitles: The One-Word Generator Guide'
-publishedAt: '2026-01-31'
+publishedAt: '2026-02-01'
 summary: 'Stop manually typing captions. Learn how to use this Python + Whisper tool to generate high-energy, "Hormozi-style" one-word subtitles directly for VN and CapCut.'
 ---
 
@@ -8,21 +8,21 @@ summary: 'Stop manually typing captions. Learn how to use this Python + Whisper 
 
 If you've seen my 50th reel, you know that retention is all about **visual pace**. One-word-at-a-time subtitles are the industry standard for keeping eyes glued to the screen, but doing it manually is a nightmare.
 
-I built this tool to automate that grind using OpenAI's Whisper. Here is how to set it up on your PC or directly on your phone via Termux.
+I built this tool to automate that grind using OpenAI's Whisper. This guide covers how to run it anywhere—including a full Linux environment inside your Android phone.
 
 ---
 
 ## 🚀 The Logic
 The script uses **Whisper (Turbo)** to handle transcription and generates a `.srt` file where every segment is exactly one word. 
 * **Punctuation Stripping:** Automatically removes commas for a cleaner look.
-* **Industry Standard CLI:** Uses `-i` and `-o` flags for professional workflow.
+* **Industry Standard CLI:** Uses `-i` and `-o` flags for a professional workflow.
 
 ---
 
-## 🛠️ Installation & Setup
+## 🛠️ Installation & Setup (PC/Mac)
 
 ### 1. Prerequisites
-You must have **FFmpeg** installed (it handles the audio extraction for the AI).
+You must have **FFmpeg** installed (it handles audio extraction for the AI).
 
 ```bash
 # Windows
@@ -36,93 +36,70 @@ brew install ffmpeg
 ### 2. Install the Generator
 
 ```bash
-git clone https://github.com/SAGAR-TAMANG/minimalist-one-word-subtitle-generator.git
-cd one-word-reel-subtitle-generator
+git clone [https://github.com/SAGAR-TAMANG/minimalist-one-word-subtitle-generator.git](https://github.com/SAGAR-TAMANG/minimalist-one-word-subtitle-generator.git)
+cd minimalist-one-word-subtitle-generator
 pip install -U openai-whisper
 
 ```
 
 ---
 
-## 💻 Professional Usage (CLI)
+## 📱 The Termux "Ubuntu" Workflow (Android)
 
-No more hardcoding file paths. Run the script from your terminal using these flags:
+To avoid dependency errors on Android, we use **PRoot Distro** to run a real Ubuntu environment inside Termux. This is the most stable way to run AI on mobile.
 
-| Flag | Meaning | Example |
-| --- | --- | --- |
-| `-i` | Input Video | `-i "my_video.mp4"` |
-| `-o` | Output Folder | `-o "~/Downloads"` |
-| `-m` | AI Model | `-m turbo` (Fastest) |
+### Step 1: Install the Linux Environment
 
-**Pro Command:**
+Paste these commands in Termux to set up your virtual Linux machine:
 
 ```bash
-python main.py -i ./vids/reel_50.mp4 -o ./subs -m turbo
+pkg update && pkg upgrade -y
+pkg install proot-distro -y
+proot-distro install ubuntu
+termux-setup-storage
+
+```
+
+### Step 2: Login & Setup Linux
+
+Now, "log in" to your new Ubuntu system and install the necessary tools:
+
+```bash
+proot-distro login ubuntu
+
+# Now inside Ubuntu:
+apt update && apt upgrade -y
+apt install python3 python3-pip ffmpeg git -y
+
+```
+
+### Step 3: Clone the Tool
+
+```bash
+git clone [https://github.com/SAGAR-TAMANG/minimalist-one-word-subtitle-generator.git](https://github.com/SAGAR-TAMANG/minimalist-one-word-subtitle-generator.git)
+cd minimalist-one-word-subtitle-generator
+pip3 install openai-whisper --break-system-packages
 
 ```
 
 ---
 
-## 📱 The Termux "Mobile-First" Workflow
+## 💻 Usage (CLI)
 
-Since I’m all about **Local AI on Android**, this tool is fully compatible with Termux. This allows you to generate captions while sitting in a cafe, no laptop required.
+Run the script using these flags. In Ubuntu (Termux), your phone's files are bridged to the `/sdcard` path.
 
-### 🛠️ Setting Up Your Termux Environment (One-Time Only)
+| Flag | Meaning | Example |
+| --- | --- | --- |
+| `-i` | Input Video | `-i "/sdcard/Download/video.mp4"` |
+| `-o` | Output Folder | `-o "/sdcard/Download/"` |
+| `-m` | AI Model | `-m turbo` (Fastest/Best) |
 
-Before you can run the generator, you need to turn Termux from a blank terminal into a development machine. Run these commands in order:
-
-1. **Update the Package List:**
-```bash
-pkg update && pkg upgrade -y
-
-```
-
-
-*(If it asks about "maintaining your current version," just hit Enter for the default.)*
-2. **Install Core Tools:**
-```bash
-pkg install python git ffmpeg -y
-
-```
-
-
-* **Python:** To run the script.
-* **Git:** To download the repo from GitHub.
-* **FFmpeg:** Essential for Whisper to extract audio from your videos.
-
-
-3. **Grant Storage Access:**
-```bash
-termux-setup-storage
-
-```
-
-*(Click **Allow** on the Android popup so Termux can find your video files.)*
-
-### Step 1: Bridge the Storage
-
-Termux is sandboxed. You must give it permission to see your phone's files:
+**The Pro Command:**
 
 ```bash
-termux-setup-storage
+python3 main.py -i /sdcard/Download/raw_reel.mp4 -o /sdcard/Download/ -m turbo
 
 ```
-
-### Step 2: Path Mapping
-
-When running the script in Termux, use these paths:
-
-* **Your Downloads:** `~/storage/downloads/`
-* **Your Camera:** `~/storage/dcim/Camera/`
-
-**Termux Execution:**
-
-```bash
-python main.py -i ~/storage/downloads/raw_reel.mp4 -o ~/storage/downloads -m base
-
-```
-
-*Note: I recommend the `base` model for Termux to save on RAM.*
 
 ---
 
@@ -140,3 +117,16 @@ python main.py -i ~/storage/downloads/raw_reel.mp4 -o ~/storage/downloads -m bas
 This is an open-source project. If you want to add auto-emoji placement or color-coding for keywords, open a PR on my GitHub!
 
 **Built by [Sagar Tamang**](https://github.com/SAGAR-TAMANG)
+
+```
+
+---
+
+### 🚀 Final Checklist for the Reel
+* **Repo URL:** Ensure the repository `minimalist-one-word-subtitle-generator` is set to **Public** before you post the Reel.
+* **The Folder Name:** Note that the `git clone` creates a folder named `minimalist-one-word-subtitle-generator`, but in your previous draft, you used a different name. I've updated the `cd` command to match the repo name exactly.
+* **The `pip3` Flag:** I added `--break-system-packages` because newer versions of Ubuntu (inside PRoot) block global pip installs. This flag is the quickest "hacker fix" for your followers.
+
+**Would you like me to help you draft the GitHub README for this project so the landing page looks as good as this guide?**
+
+```
