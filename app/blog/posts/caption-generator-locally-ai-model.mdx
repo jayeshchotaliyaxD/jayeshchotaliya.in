@@ -67,6 +67,38 @@ python main.py -i ./vids/reel_50.mp4 -o ./subs -m turbo
 
 Since I’m all about **Local AI on Android**, this tool is fully compatible with Termux. This allows you to generate captions while sitting in a cafe, no laptop required.
 
+### 🛠️ Setting Up Your Termux Environment (One-Time Only)
+
+Before you can run the generator, you need to turn Termux from a blank terminal into a development machine. Run these commands in order:
+
+1. **Update the Package List:**
+```bash
+pkg update && pkg upgrade -y
+
+```
+
+
+*(If it asks about "maintaining your current version," just hit Enter for the default.)*
+2. **Install Core Tools:**
+```bash
+pkg install python git ffmpeg -y
+
+```
+
+
+* **Python:** To run the script.
+* **Git:** To download the repo from GitHub.
+* **FFmpeg:** Essential for Whisper to extract audio from your videos.
+
+
+3. **Grant Storage Access:**
+```bash
+termux-setup-storage
+
+```
+
+*(Click **Allow** on the Android popup so Termux can find your video files.)*
+
 ### Step 1: Bridge the Storage
 
 Termux is sandboxed. You must give it permission to see your phone's files:
