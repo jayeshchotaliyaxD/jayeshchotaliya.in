@@ -1,0 +1,110 @@
+---
+title: 'Automating High-Retention Subtitles: The One-Word Generator Guide'
+publishedAt: '2026-01-31'
+summary: 'Stop manually typing captions. Learn how to use this Python + Whisper tool to generate high-energy, "Hormozi-style" one-word subtitles directly for VN and CapCut.'
+---
+
+# The "sagar_builds" Subtitle Automation Guide
+
+If you've seen my 50th reel, you know that retention is all about **visual pace**. One-word-at-a-time subtitles are the industry standard for keeping eyes glued to the screen, but doing it manually is a nightmare.
+
+I built this tool to automate that grind using OpenAI's Whisper. Here is how to set it up on your PC or directly on your phone via Termux.
+
+---
+
+## 🚀 The Logic
+The script uses **Whisper (Turbo)** to handle transcription and generates a `.srt` file where every segment is exactly one word. 
+* **Punctuation Stripping:** Automatically removes commas for a cleaner look.
+* **Industry Standard CLI:** Uses `-i` and `-o` flags for professional workflow.
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Prerequisites
+You must have **FFmpeg** installed (it handles the audio extraction for the AI).
+
+```bash
+# Windows
+choco install ffmpeg
+
+# macOS
+brew install ffmpeg
+
+```
+
+### 2. Install the Generator
+
+```bash
+git clone [https://github.com/SAGAR-TAMANG/one-word-reel-subtitle-generator.git](https://github.com/SAGAR-TAMANG/one-word-reel-subtitle-generator.git)
+cd one-word-reel-subtitle-generator
+pip install -U openai-whisper
+
+```
+
+---
+
+## 💻 Professional Usage (CLI)
+
+No more hardcoding file paths. Run the script from your terminal using these flags:
+
+| Flag | Meaning | Example |
+| --- | --- | --- |
+| `-i` | Input Video | `-i "my_video.mp4"` |
+| `-o` | Output Folder | `-o "~/Downloads"` |
+| `-m` | AI Model | `-m turbo` (Fastest) |
+
+**Pro Command:**
+
+```bash
+python main.py -i ./vids/reel_50.mp4 -o ./subs -m turbo
+
+```
+
+---
+
+## 📱 The Termux "Mobile-First" Workflow
+
+Since I’m all about **Local AI on Android**, this tool is fully compatible with Termux. This allows you to generate captions while sitting in a cafe, no laptop required.
+
+### Step 1: Bridge the Storage
+
+Termux is sandboxed. You must give it permission to see your phone's files:
+
+```bash
+termux-setup-storage
+
+```
+
+### Step 2: Path Mapping
+
+When running the script in Termux, use these paths:
+
+* **Your Downloads:** `~/storage/downloads/`
+* **Your Camera:** `~/storage/dcim/Camera/`
+
+**Termux Execution:**
+
+```bash
+python main.py -i ~/storage/downloads/raw_reel.mp4 -o ~/storage/downloads -m base
+
+```
+
+*Note: I recommend the `base` model for Termux to save on RAM.*
+
+---
+
+## 🎨 Importing to Your Editor
+
+1. **VN Editor:** Tap **Text** > **SRT** > **Import**. Apply a "Pop" animation to the entire track.
+2. **CapCut:** Go to **Text** > **Local Captions** > **Upload**. Use "Batch Edit" to style every word simultaneously.
+
+> **Builder Tip:** I usually set the text to **All Caps** and use a bold font like *The Bold Font* or *Komika Axis* to maximize the impact.
+
+---
+
+## 🤝 Contributing
+
+This is an open-source project. If you want to add auto-emoji placement or color-coding for keywords, open a PR on my GitHub!
+
+**Built by [Sagar Tamang**](https://github.com/SAGAR-TAMANG)
