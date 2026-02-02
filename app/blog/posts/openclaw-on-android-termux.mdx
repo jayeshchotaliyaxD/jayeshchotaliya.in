@@ -1,0 +1,120 @@
+# 🦞 OpenClaw on Termux: The "Sagar Builds" Guide
+
+Most people run **OpenClaw** on $2,000 Mac Studios or AWS instances. This guide shows you how to run the full Gateway, Browser Control, and WhatsApp/Telegram channels directly on **Android** using **Termux**.
+
+## 🛠️ Prerequisites
+
+* **Android Device:** Android 10 or higher.
+* **Termux:** Installed from F-Droid (not Play Store).
+* **OpenAI/Anthropic API Key:** (Ensure you have credits!).
+
+---
+
+## 1. Environment Setup
+
+Standard Termux has issues with OpenClaw’s native dependencies. We use `proot-distro` to create a stable Ubuntu environment.
+
+```bash
+# Update Termux
+pkg update && pkg upgrade -y
+pkg install proot-distro -y
+
+# Install & Login to Ubuntu
+proot-distro install ubuntu
+proot-distro login ubuntu
+
+```
+
+## 2. Install Dependencies
+
+Inside your new Ubuntu shell, install **Node.js 22** and the build tools.
+
+```bash
+apt update && apt upgrade -y
+apt install curl git build-essential -y
+
+# Install Node 22
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt install -y nodejs
+
+# Install pnpm (OpenClaw's preferred manager)
+npm install -g pnpm
+
+```
+
+## 3. The "Bionic Bypass" (Crucial)
+
+Android's kernel blocks the `os.networkInterfaces()` call, which causes a **System Error 13** crash. We fix this by "hijacking" the Node.js runtime.
+
+**Create the Hijack Script:**
+
+```bash
+cat <<EOF > /root/hijack.js
+const os = require('os');
+os.networkInterfaces = () => ({});
+EOF
+
+```
+
+**Make it permanent:**
+
+```bash
+echo 'export NODE_OPTIONS="-r /root/hijack.js"' >> ~/.bashrc
+source ~/.bashrc
+
+```
+
+---
+
+## 4. Build OpenClaw from Source
+
+Now we pull the latest lobster and build the binaries.
+
+```bash
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+pnpm install
+pnpm build
+
+```
+
+---
+
+## 5. The Onboarding Wizard
+
+Run the wizard to link your API keys and WhatsApp/Telegram.
+
+```bash
+node dist/entry.js onboard
+
+```
+
+> [!IMPORTANT]
+> **Gateway Bind:** When the wizard asks for the Gateway Bind, select **Loopback (127.0.0.1)**. Choosing LAN/0.0.0.0 will trigger a crash on non-rooted Android devices.
+
+---
+
+## 6. Launching the Gateway
+
+To start the engine and see the logs in real-time (perfect for Reel footage):
+
+```bash
+node dist/entry.js gateway --verbose --thinking high
+
+```
+
+### 🏁 Verified Commands
+
+Once the gateway is live, use these chat commands in your linked WhatsApp/Telegram:
+
+* `/status` — Check the health of your pocket agent.
+* `/think high` — Put the bot in "deep reasoning" mode.
+* `/reset` — Clear the current session memory.
+
+---
+
+## Pro-Tips
+
+* **Keep it Alive:** Android will kill Termux in the background. Run `termux-wake-lock` in a separate Termux session and disable "Battery Optimization" for Termux.
+* **The UI:** Access your dashboard by going to `http://127.0.0.1:18789` in your phone's browser. Get your token using `openclaw config get gateway.auth.token`.
+* **Security:** Never show your full API keys or Gateway tokens in your videos. **Revoke the keys used during setup** once you finish filming your "Success" shot.
