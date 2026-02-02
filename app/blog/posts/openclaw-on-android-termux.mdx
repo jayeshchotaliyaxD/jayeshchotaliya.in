@@ -1,3 +1,9 @@
+---
+title: 'Running OpenClaw Locally on Android: The Bionic Bypass'
+publishedAt: '2026-02-02'
+summary: 'Turn your Android phone into a 24/7 autonomous AI gateway. Learn how to bypass Bionic kernel restrictions to run OpenClaw (Clawdbot) flawlessly in your pocket.'
+---
+
 # 🦞 OpenClaw on Termux: The "Sagar Builds" Guide
 
 Most people run **OpenClaw** on $2,000 Mac Studios or AWS instances. This guide shows you how to run the full Gateway, Browser Control, and WhatsApp/Telegram channels directly on **Android** using **Termux**.
@@ -116,5 +122,5 @@ Once the gateway is live, use these chat commands in your linked WhatsApp/Telegr
 ## Pro-Tips
 
 * **Keep it Alive:** Android will kill Termux in the background. Run `termux-wake-lock` in a separate Termux session and disable "Battery Optimization" for Termux.
-* **The UI:** Access your dashboard by going to `http://127.0.0.1:18789` in your phone's browser. Get your token using `openclaw config get gateway.auth.token`.
+* **The UI:** Access your dashboard by going to `http://127.0.0.1:18789` in your phone's browser. Get your token using `openclaw config get gateway.auth.token` or in the file `~/.openclaw/openclaw.json`.
 * **Security:** Never show your full API keys or Gateway tokens in your videos. **Revoke the keys used during setup** once you finish filming your "Success" shot.
