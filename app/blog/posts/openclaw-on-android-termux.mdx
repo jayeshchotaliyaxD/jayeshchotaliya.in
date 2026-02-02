@@ -1,7 +1,7 @@
 ---
 title: 'Running OpenClaw Locally on Android: The Bionic Bypass'
 publishedAt: '2026-02-02'
-summary: 'Turn your Android phone into a 24/7 autonomous AI gateway. Learn how to bypass Bionic kernel restrictions to run OpenClaw (Clawdbot) flawlessly in your pocket.'
+summary: 'Turn your Android phone into a 24/7 autonomous AI gateway. Learn how to bypass Bionic kernel restrictions to run OpenClaw flawlessly in your pocket using npm.'
 ---
 
 # 🦞 OpenClaw on Termux: The "Sagar Builds" Guide
@@ -35,7 +35,7 @@ proot-distro login ubuntu
 
 ## 2. Install Dependencies
 
-Inside your new Ubuntu shell, install **Node.js 22** and the build tools.
+Inside your new Ubuntu shell, install **Node.js 22** and the global package.
 
 ```bash
 apt update && apt upgrade -y
@@ -45,14 +45,14 @@ apt install curl git build-essential -y
 curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 apt install -y nodejs
 
-# Install pnpm (OpenClaw's preferred manager)
-npm install -g pnpm
+# Install OpenClaw globally
+npm install -g openclaw@latest
 
 ```
 
 ## 3. The "Bionic Bypass" (Crucial)
 
-Android's kernel blocks the `os.networkInterfaces()` call, which causes a **System Error 13** crash. We fix this by "hijacking" the Node.js runtime.
+Android's kernel blocks the `os.networkInterfaces()` call, which causes a **System Error 13** crash. We fix this by "hijacking" the Node.js runtime before the bot even starts.
 
 **Create the Hijack Script:**
 
@@ -64,7 +64,7 @@ EOF
 
 ```
 
-**Make it permanent:**
+**Make it permanent for all OpenClaw commands:**
 
 ```bash
 echo 'export NODE_OPTIONS="-r /root/hijack.js"' >> ~/.bashrc
@@ -74,26 +74,12 @@ source ~/.bashrc
 
 ---
 
-## 4. Build OpenClaw from Source
+## 4. The Onboarding Wizard
 
-Now we pull the latest lobster and build the binaries.
-
-```bash
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
-pnpm install
-pnpm build
-
-```
-
----
-
-## 5. The Onboarding Wizard
-
-Run the wizard to link your API keys and WhatsApp/Telegram.
+Since we installed globally, you can run the wizard from anywhere. This will link your API keys and pair your WhatsApp/Telegram.
 
 ```bash
-node dist/entry.js onboard
+openclaw onboard
 
 ```
 
@@ -102,12 +88,12 @@ node dist/entry.js onboard
 
 ---
 
-## 6. Launching the Gateway
+## 5. Launching the Gateway
 
 To start the engine and see the logs in real-time (perfect for Reel footage):
 
 ```bash
-node dist/entry.js gateway --verbose --thinking high
+openclaw gateway --verbose --thinking high
 
 ```
 
@@ -124,5 +110,5 @@ Once the gateway is live, use these chat commands in your linked WhatsApp/Telegr
 ## Pro-Tips
 
 * **Keep it Alive:** Android will kill Termux in the background. Run `termux-wake-lock` in a separate Termux session and disable "Battery Optimization" for Termux.
-* **The UI:** Access your dashboard by going to `http://127.0.0.1:18789` in your phone's browser. Get your token using `openclaw config get gateway.auth.token` or in the file `~/.openclaw/openclaw.json`.
+* **The UI:** Access your dashboard by going to `http://127.0.0.1:18789` in your phone's browser. Get your token using `openclaw config get gateway.auth.token`.
 * **Security:** Never show your full API keys or Gateway tokens in your videos. **Revoke the keys used during setup** once you finish filming your "Success" shot.
