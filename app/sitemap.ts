@@ -1,7 +1,7 @@
 import { getBlogPosts } from 'app/blog/utils'
 import { getProjects } from 'app/projects/utils'
 
-export const baseUrl = 'https://sagartamang.com'
+export const baseUrl = 'https://jayeshchotaliya.in'
 
 export default async function sitemap() {
   // 1. Get all Blog Post URLs

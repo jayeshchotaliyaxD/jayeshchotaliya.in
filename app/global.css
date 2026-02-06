@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 ::selection {
-  background-color: #47a3f3;
+  background-color: #4c97f8;
   color: #fefefe;
 }
 
@@ -11,6 +11,10 @@
 
   --spacing-figma-inside-gap: 10px;
   --spacing-figma-outside-gap: 18px;
+  
+  /* Accent color */
+  --color-accent: #4c97f8;
+  --color-accent-hover: #6aabff;
 }
 
 :root {
@@ -37,8 +41,16 @@
   }
 }
 
+/* Force dark mode */
 html {
   min-width: 360px;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #fafafa;
 }
 
 .prose .anchor {

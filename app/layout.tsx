@@ -26,53 +26,45 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Sagar Tamang | AI Engineer',
-    template: '%s | Sagar Tamang',
+    default: 'Jayesh Chotaliya | Embedded Software Engineer',
+    template: '%s | Jayesh Chotaliya',
   },
-  description: 'AI Engineer based in Bangalore. Currently building intelligent products at TwoSpoon.ai. Master\'s from IIT Patna & IIT Ranchi.',
+  description: 'Embedded Software Engineer at ABB, Bangalore. Specializing in IoT, Cloud Connectivity, and Industrial Automation systems.',
   
-  // 1. Keywords: Derived from your "Previous" and "Builds" components
   keywords: [
-    'Sagar Tamang',
-    'AI Engineer',
-    'Full Stack Developer',
-    'Product Engineer',
+    'Jayesh Chotaliya',
+    'Embedded Software Engineer',
+    'ABB',
+    'IoT Engineer',
     'Bangalore',
-    'Nepal',
-    'TwoSpoon.ai',
-    'Composio.dev',
-    'LeapX.ai',
-    'Next.js',
-    'Python',
-    'Django',
-    'LLM',
-    'Generative AI'
+    'C++',
+    'Embedded Systems',
+    'OPC UA',
+    'Azure IoT Hub',
+    'Yocto',
+    'ARM Cortex-M',
+    'Industrial Automation'
   ],
 
-  // 2. Authors & Creator info
-  authors: [{ name: 'Sagar Tamang', url: baseUrl }],
-  creator: 'Sagar Tamang',
+  authors: [{ name: 'Jayesh Chotaliya', url: baseUrl }],
+  creator: 'Jayesh Chotaliya',
   
-  // 3. Open Graph (Facebook, LinkedIn, iMessage)
   openGraph: {
-    title: 'Sagar Tamang | AI Engineer',
-    description: 'AI Engineer based in Bangalore. Building intelligent products that are scalable and fast.',
+    title: 'Jayesh Chotaliya | Embedded Software Engineer',
+    description: 'Embedded Software Engineer at ABB. Building secure cloud-connected industrial systems.',
     url: baseUrl,
-    siteName: 'Sagar Tamang Portfolio',
+    siteName: 'Jayesh Chotaliya Portfolio',
     locale: 'en_US',
     type: 'website',
-    // This will automatically grab the file from app/opengraph-image.tsx
   },
 
-  // 4. Twitter Card (X)
   twitter: {
     card: 'summary_large_image',
-    title: 'Sagar Tamang | AI Engineer',
-    description: 'AI Engineer at TwoSpoon.ai. Building fast.',
-    creator: '@sagar_builds', // Updated to your handle from Footer
+    title: 'Jayesh Chotaliya | Embedded Software Engineer',
+    description: 'Embedded Software Engineer at ABB. IoT & Cloud Connectivity.',
+    creator: '@jayeshchotaliya',
   },
 
-  // 5. Robots control (ensure you are indexed)
   robots: {
     index: true,
     follow: true,
@@ -102,12 +94,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        'dark text-white bg-neutral-950',
         playfair.variable,
         manrope.variable
       )}
     >
-      <body className={`font-serif antialiased max-w-xl mx-4 mt-8 lg:mx-auto text-sm tracking-tight lowercase`}>
+      <body className={`font-serif antialiased max-w-2xl mx-4 mt-8 lg:mx-auto text-sm tracking-tight`}>
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           {children}
           <Footer />

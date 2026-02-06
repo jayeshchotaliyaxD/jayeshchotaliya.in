@@ -1,0 +1,110 @@
+\documentclass[10pt,letterpaper]{article}
+
+% Minimal packages for maximum ATS compatibility
+\usepackage[top=0.5in, bottom=0.5in, left=0.6in, right=0.6in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+
+% Remove page numbers
+\pagestyle{empty}
+
+% Aggressive spacing reduction
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist{nosep, leftmargin=0.15in, topsep=1pt, itemsep=0.5pt}
+
+% Compact section formatting
+\titleformat{\section}{\normalsize\bfseries\uppercase}{}{0pt}{}[\vspace{0.5pt}\titlerule]
+\titlespacing{\section}{0pt}{5pt}{2pt}
+
+\begin{document}
+
+% ==================== HEADER ====================
+\begin{center}
+    {\large \textbf{JAYESH CHOTALIYA}}\\[3pt]
+    Bangalore, India | \href{mailto:chotaliyajayesh3@gmail.com}{chotaliyajayesh3@gmail.com} | +91 97144 47996 | \href{https://linkedin.com/in/jayeshchotaliya}{linkedin.com/in/jayeshchotaliya}
+\end{center}
+
+% ==================== PROFESSIONAL EXPERIENCE ====================
+\section*{Professional Experience}
+
+\textbf{Associate R\&D Engineer - Embedded Software Engineer} \hfill \textit{September 2023 -- Present}\\
+\textbf{ABB Global Industries and Services Pvt. Ltd.}, Bangalore, India
+
+\begin{itemize}
+    \item Architected secure cloud connectivity for industrial drives using TPM and certificate authentication, enabling predictive maintenance and reducing downtime by 30\%
+    \item Engineered firmware modules on LmP OS (Yocto-based) for real-time data exchange across DDCS, Phloem-eth, and OPC UA protocols
+    \item Developed OPC UA server/client modules for standardized industrial equipment data exchange and real-time drive monitoring
+    \item Designed modular architecture with MQTT/ZeroMQ message-based IPC, improving maintainability and scalability
+    \item Created multithreaded data aggregation pipelines for telemetry and events, optimizing memory and reducing bandwidth
+    \item Implemented Azure IoT Hub integration with device provisioning, twin sync, and secure file upload for remote management
+    \item Performed system bring-up, UART/I2C debugging, and collaborated with firmware/hardware teams for integration
+    \item Established test frameworks with Google Test and CMake achieving 80\%+ coverage; integrated HIL testing
+    \item Optimized data pipelines achieving 40\% throughput improvement and 99.9\% uptime through robust error handling
+\end{itemize}
+
+\textbf{Technologies:} C++17, C, Boost, nlohmann\_json, LmP OS, Yocto, OPC UA, MQTT, TPM, ZeroMQ, Azure IoT Hub, CMake, Google Test, UART, I2C
+
+\vspace{4pt}
+
+\textbf{Embedded Systems Trainee} \hfill \textit{March 2023 -- September 2023}\\
+\textbf{Vector India Pvt. Ltd.}, Bangalore, India
+
+\begin{itemize}
+    \item Built bare-metal applications and device drivers on ARM Cortex-M using Embedded C and CMSIS
+    \item Developed RTOS schedulers and ISR-driven applications for GPIO, UART, ADC, and CAN peripherals
+    \item Gained expertise in memory-mapped I/O, register programming, and debugging with Keil MDK, Proteus, GDB
+    \item Worked with Linux cross-compilation toolchains (GCC ARM) and embedded development workflows
+\end{itemize}
+
+\textbf{Technologies:} Embedded C, ARM Cortex-M, CMSIS, FreeRTOS, Keil MDK, Proteus, GDB, UART, I2C, SPI, CAN
+
+% ==================== TECHNICAL SKILLS ====================
+\section*{Technical Skills}
+
+\textbf{Languages:} C, C++ (C++11/14/17, STL, Boost), Python, Shell Scripting, Embedded C
+
+\textbf{Embedded Systems:} ARM Cortex-M, LPC2129, STM32, Bare-metal, RTOS (FreeRTOS), Embedded Linux, Yocto, LmP OS
+
+\textbf{Protocols \& Interfaces:} OPC UA, MQTT, ZeroMQ, Modbus, CAN 2.0A, UART, I2C, SPI, GPIO, TCP/IP
+
+\textbf{Tools \& Frameworks:} Git, CMake, GCC, Keil MDK, Proteus, GDB, Google Test, Docker, CI/CD, CMSIS, nlohmann\_json
+
+\textbf{Cloud \& Security:} Azure IoT Hub, Device Provisioning, TPM, Certificate Authentication, Secure Boot, TLS/SSL
+
+% ==================== PROJECTS ====================
+\section*{Projects}
+
+\textbf{C Compiler -- Preprocessor Stage} | Vector India Pvt. Ltd. \hfill \textit{August 2023}
+\begin{itemize}
+    \item Designed GCC-compliant preprocessor in C for macro expansion, conditional compilation, and header inclusion
+    \item Optimized lexical analysis achieving 25\% reduction in preprocessing time through efficient hash tables
+\end{itemize}
+
+\textbf{Body Control Module -- CAN Protocol (ARM LPC2129)} | Vector India Pvt. Ltd. \hfill \textit{July 2023}
+\begin{itemize}
+    \item Implemented BCM using CAN 2.0A on ARM7-based LPC2129 for automotive applications
+    \item Developed interrupt-driven firmware to control vehicle LEDs via CAN with bit timing and bus arbitration
+\end{itemize}
+
+% ==================== EDUCATION ====================
+\section*{Education}
+
+\textbf{Bachelor of Engineering in Electronics and Communication} | CGPA: 7.92/10 \hfill \textit{July 2016 -- Aug 2020}\\
+L.D. College of Engineering, Ahmedabad, India
+
+\textbf{Higher Secondary (12th)} | 74\% \hfill \textit{March 2016} | St. Xavier's High School, Surat
+
+\textbf{Secondary (10th)} | 81\% \hfill \textit{March 2014} | J.V. High School, Surat
+
+% ==================== ADDITIONAL ====================
+\section*{Certifications \& Activities}
+
+\textbf{Embedded Systems Training} | Vector India Pvt. Ltd. \hfill \textit{March 2023 -- September 2023}
+
+\textbf{Leadership:} ABB Cultural/Food Committee member | 1st prize Indian National Theatre | GTU Tech Fest operations lead
+
+\textbf{Notable Projects:} Contributed to ABB EGW-02 Connectivity Edge Gateway (Red Dot Award-winning product)
+
+\end{document}

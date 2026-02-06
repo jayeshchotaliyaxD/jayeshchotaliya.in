@@ -13,6 +13,7 @@
     "@types/react-dom": "18.2.19",
     "@vercel/analytics": "^1.1.3",
     "@vercel/speed-insights": "^1.0.9",
+    "framer-motion": "^11.15.0",
     "geist": "1.2.2",
     "next": "^16.0.10",
     "next-mdx-remote": "^4.4.1",
