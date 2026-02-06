@@ -1,0 +1,44 @@
+---
+title: 'Body Control Module - CAN Protocol'
+publishedAt: '2023-07-01'
+summary: 'Automotive BCM implementation using CAN 2.0A on ARM7-based LPC2129 microcontroller.'
+image: '/projects/bcm.webp'
+tech: 'Embedded C, ARM LPC2129, CAN 2.0A, Interrupt-driven I/O'
+---
+
+## Overview
+
+Implemented a Body Control Module (BCM) using CAN 2.0A protocol on an ARM7-based LPC2129 microcontroller for automotive applications. This project was developed during my embedded systems training at Vector India Pvt. Ltd.
+
+## Key Features
+
+- **CAN 2.0A Communication**: Full implementation of CAN protocol with proper bit timing configuration
+- **Bus Arbitration**: Handled CAN bus arbitration for multi-node communication
+- **LED Control**: Vehicle LED control via CAN messages for indicators, headlights, etc.
+- **Interrupt-Driven**: ISR-based message handling for real-time responsiveness
+
+## Technical Implementation
+
+### Hardware Setup
+- **MCU**: NXP LPC2129 (ARM7TDMI-S core)
+- **CAN Transceiver**: MCP2551 or similar
+- **I/O**: GPIO for LED control, status indicators
+
+### Software Architecture
+- Interrupt-driven CAN message reception and transmission
+- Message filtering based on CAN ID for efficient processing
+- Bit timing configuration for reliable bus communication
+- Error handling for bus-off recovery and error frame detection
+
+## Key Achievements
+
+- Successfully demonstrated multi-node CAN communication
+- Achieved reliable message delivery at 500 kbps baud rate
+- Implemented proper error detection and recovery mechanisms
+
+## Technologies Used
+
+- **MCU**: ARM7-based LPC2129
+- **Protocol**: CAN 2.0A
+- **Language**: Embedded C
+- **Tools**: Keil MDK, Flash Magic, CAN Analyzer

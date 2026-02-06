@@ -1,0 +1,44 @@
+---
+title: 'Secure Cloud Connectivity for Industrial Drives'
+publishedAt: '2024-06-15'
+summary: 'How TPM and certificate-based authentication enables secure IoT connectivity for industrial equipment.'
+---
+
+# Secure Cloud Connectivity for Industrial Drives
+
+As embedded systems increasingly connect to the cloud, security becomes paramount. In industrial environments, a security breach can mean not just data loss, but physical safety risks and operational downtime.
+
+## The Challenge
+
+Industrial drives and motors traditionally operated in isolated networks. Modern Industry 4.0 requirements demand:
+- Remote monitoring and predictive maintenance
+- Real-time telemetry and analytics
+- Over-the-air firmware updates
+- Integration with enterprise systems
+
+## The Solution: TPM + Certificate Authentication
+
+At ABB, we implemented a multi-layered security approach:
+
+### Hardware Root of Trust
+Using TPM (Trusted Platform Module), we establish a hardware root of trust. Private keys never leave the secure element, making key extraction practically impossible.
+
+### X.509 Certificates
+Device identity is established through X.509 certificates, provisioned during manufacturing and renewed automatically before expiration.
+
+### Azure IoT Hub Integration
+The Azure Device Provisioning Service (DPS) handles:
+- Zero-touch provisioning
+- Certificate-based authentication
+- Automatic hub assignment based on device attributes
+
+## Results
+
+This architecture enabled:
+- **30% reduction** in unplanned downtime through predictive maintenance
+- **99.9% uptime** for cloud connectivity
+- Compliance with IEC 62443 security standards
+
+---
+
+*This article reflects my work on the ABB EGW-02 Connectivity Edge Gateway.*

@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 const Previous = () => {
   return (
     <section>
@@ -9,40 +7,16 @@ const Previous = () => {
         </h1>
 
         <div className="flex items-center justify-start gap-2">
-          <Image src={"/leapx-ai-favicon.svg"} alt="leapx-ai-favicon" height={10} width={10} />
           <p>
             <a target="_blank" 
               rel="noopener noreferrer"
-              href="https://leapx.ai/"
+              href="https://www.vector.com/"
               className="underline hover:decoration-neutral-400 underline-offset-4"
-            >leapx.ai</a>
-            {' '} ~ ai engineer intern [gurgaon, india]
+            >vector india pvt. ltd.</a>
+            {' '} ~ embedded systems trainee [bangalore, india]
           </p>
         </div>
 
-        <div className="flex items-center justify-start gap-2">
-          <Image src={"/composio-dev-favicon.svg"} alt="leapx-ai-favicon" height={12} width={12} />
-          <p>
-            <a target="_blank" 
-              rel="noopener noreferrer"
-              href="https://composio.dev/"
-              className="underline hover:decoration-neutral-400 underline-offset-4"
-            >composio.dev</a>
-            {' '} ~ software engineering (python) [bangalore, india]
-          </p>
-        </div>
-
-        <div className="flex items-center justify-start gap-2">
-          <Image src={"/successscholar-favicon.svg"} alt="leapx-ai-favicon" height={10} width={10} />
-          <p>
-            <a target="_blank" 
-              rel="noopener noreferrer"
-              href="https://successscholar.in/"
-              className="underline hover:decoration-neutral-400 underline-offset-4"
-            >successscholar.in</a>
-            {' '} ~ product owner/developer [kolkata, india]
-          </p>
-        </div>
       </div>
     </section>
   )

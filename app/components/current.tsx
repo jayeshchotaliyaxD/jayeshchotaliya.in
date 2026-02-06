@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 const Current = () => {
   return (
     <section>
@@ -7,35 +5,21 @@ const Current = () => {
         <h1 className="font-semibold italic">
           Current
         </h1>
-        <p>ai engineer at{' '}
+        <p>associate r&d engineer at{' '}
           <span className="inline-flex align-middle gap-0.5 bg-white text-black rounded-sm px-0.5 py-0 hover:cursor-pointer hover:bg-white/90 active:bg-white/70 transition leading-4">
-            <Image 
-              className="invert"
-              src={"/twospoon-logo-favicon.svg"}
-              alt="favicon" 
-              height={12}
-              width={12} 
-            />
             <a target="_blank" 
               rel="noopener noreferrer"
-              href="https://twospoon.ai/"
+              href="https://global.abb/group/en"
               className=""
               >
-              twospoon.ai
+              ABB
             </a>
           </span>
-          , building intelligent systems that are both scalable and fast. research aptitude with 4 best papers and 20+ citations on 
-          {' '}
-          <a target="_blank" 
-            rel="noopener noreferrer"
-            href="https://scholar.google.com/citations?hl=en&user=3mS0Y4wAAAAJ"
-            className="underline hover:decoration-neutral-400 underline-offset-4"
-          >
-          google scholar
-          </a>
-          . bachelors' gold medalist. masters student @ IIT Patna and IIIT Ranchi.</p>
-        <p>enjoy coding, content creation, writing, superbikes, and reading ancient greek texts.</p>
-        <p>i can build <span className="italic font-semibold">anything.</span></p>
+          , architecting secure cloud connectivity for industrial drives using TPM and certificate authentication.
+          building firmware modules on Yocto-based embedded linux for real-time data exchange.
+        </p>
+        <p>b.e. in electronics & communication from l.d. college of engineering, ahmedabad.</p>
+        <p>contributed to the <span className="italic font-semibold">Red Dot Award-winning</span> ABB EGW-02 Connectivity Edge Gateway.</p>
       </div>
     </section>
   )

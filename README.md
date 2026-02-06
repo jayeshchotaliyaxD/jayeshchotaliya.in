@@ -53,4 +53,4 @@ lib/
 
 ## License
 
-MIT © [Sagar Tamang](https://github.com/SAGAR-TAMANG)
+MIT © [Jayesh Chotaliya](https://github.com/jayeshchotaliyaxD)

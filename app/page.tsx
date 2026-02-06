@@ -15,8 +15,12 @@ export default function Page() {
 
   return (
     <div className='flex flex-col gap-8'>
-      <MainHeader header={resumeData.header} skills={headerSkills} />
-      <About currentJob={currentJob} />
+      <MainHeader header={resumeData.header} skills={headerSkills} currentJob={currentJob} />
+      <About 
+        currentJob={currentJob} 
+        education={resumeData.education}
+        notableProjects={resumeData.notableProjects}
+      />
       
       {/* Two-column grid for Experience + Skills */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

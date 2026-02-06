@@ -1,0 +1,32 @@
+---
+title: 'C Compiler - Preprocessor Stage'
+publishedAt: '2023-08-01'
+summary: 'GCC-compliant preprocessor in C for macro expansion, conditional compilation, and header inclusion.'
+image: '/projects/compiler.webp'
+tech: 'C, GCC, Lexical Analysis, Hash Tables'
+---
+
+## Overview
+
+Designed and implemented a GCC-compliant preprocessor as the first stage of a C compiler. This project was developed during my embedded systems training at Vector India Pvt. Ltd.
+
+## Key Features
+
+- **Macro Expansion**: Full support for `#define` macros with parameter substitution
+- **Conditional Compilation**: Handles `#if`, `#ifdef`, `#ifndef`, `#else`, `#elif`, `#endif` directives
+- **Header Inclusion**: Processes `#include` directives with proper file path resolution
+- **Line Continuations**: Handles backslash line continuations correctly
+
+## Technical Highlights
+
+- Optimized lexical analysis achieving **25% reduction** in preprocessing time
+- Implemented efficient hash tables for macro symbol table management
+- Proper handling of stringification (`#`) and token pasting (`##`) operators
+- Support for predefined macros like `__FILE__`, `__LINE__`, `__DATE__`
+
+## Technologies Used
+
+- **Language**: C (ANSI C99)
+- **Build System**: Make/GCC
+- **Data Structures**: Hash Tables, Linked Lists, Circular Buffers
+- **Testing**: Custom test suite with edge case coverage

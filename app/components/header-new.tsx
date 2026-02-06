@@ -1,18 +1,21 @@
 'use client'
 
-import { getResumeData } from 'lib/get-resume'
 import BoxedText from './boxed-text'
 import { AnimatedSection, StaggerContainer, StaggerItem } from 'lib/animations'
-
-// Server component wrapper to get data
-import { ResumeHeader } from 'lib/resume-types'
+import type { ResumeHeader, Experience } from 'lib/resume-types'
 
 interface MainHeaderProps {
   header: ResumeHeader
   skills: string[]
+  currentJob: Experience
 }
 
-export default function MainHeader({ header, skills }: MainHeaderProps) {
+export default function MainHeader({ header, skills, currentJob }: MainHeaderProps) {
+  // Extract short title (first part before hyphen)
+  const shortTitle = currentJob.title.split(' - ')[0] || currentJob.title
+  // Extract company name (first part before comma or full name)
+  const companyShort = currentJob.company.split(' ')[0] || currentJob.company
+
   return (
     <AnimatedSection className="">
       <div className="flex flex-col gap-figma-inside-gap">
@@ -29,7 +32,7 @@ export default function MainHeader({ header, skills }: MainHeaderProps) {
               ))}
             </StaggerContainer>
             <p className="italic text-neutral-400">
-              embedded software engineer @ <span className="text-white font-medium">ABB</span>
+              {shortTitle.toLowerCase()} @ <span className="text-white font-medium">{companyShort}</span>
             </p>
           </div>
           <div className="text-left md:text-right">

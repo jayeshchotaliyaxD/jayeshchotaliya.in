@@ -13,12 +13,12 @@ const Contact = () => {
             className="underline hover:decoration-neutral-400 underline-offset-4 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors"
           >
             resume
-          </a> or Book a slot at {' '}
+          </a> or reach out via {' '}
           <a target="_blank" 
             rel="noopener noreferrer"
-            href="https://cal.com/sagar-tamang"
+            href="mailto:chotaliyajayesh3@gmail.com"
             className="underline hover:decoration-neutral-400 underline-offset-4"
-          >Cal.com</a>
+          >email</a>
         </p>
       </div>
     </section>

@@ -1,0 +1,58 @@
+---
+title: 'Getting Started with OPC UA for Industrial IoT'
+publishedAt: '2024-04-20'
+summary: 'A practical guide to implementing OPC UA client/server communication for industrial equipment monitoring.'
+---
+
+# Getting Started with OPC UA for Industrial IoT
+
+OPC UA (Open Platform Communications Unified Architecture) has become the de facto standard for industrial equipment data exchange. Here's a practical introduction based on my experience implementing OPC UA at ABB.
+
+## What is OPC UA?
+
+OPC UA provides:
+- **Platform independence**: Works on any OS, any hardware
+- **Semantic data modeling**: Self-describing data with rich metadata
+- **Security built-in**: Encryption, authentication, authorization
+- **Pub/Sub support**: For efficient real-time data distribution
+
+## Basic Architecture
+
+```
+┌─────────────┐     ┌─────────────┐
+│  OPC UA     │     │  OPC UA     │
+│  Client     │◄───►│  Server     │
+│  (SCADA/HMI)│     │  (Device)   │
+└─────────────┘     └─────────────┘
+```
+
+## Key Concepts
+
+### Address Space
+The server exposes an **address space** - a hierarchical structure of nodes representing:
+- Variables (sensor readings, setpoints)
+- Methods (callable functions)
+- Objects (logical groupings)
+
+### Subscriptions
+Clients create **subscriptions** to receive data change notifications efficiently, rather than polling.
+
+### Discovery
+OPC UA includes built-in **discovery** mechanisms to find servers on the network.
+
+## Implementation Tips
+
+1. **Start with open62541**: Excellent open-source C library
+2. **Use async patterns**: Industrial systems need non-blocking I/O
+3. **Plan your information model**: Good modeling = easier integration
+4. **Test with UaExpert**: Free client for debugging
+
+## Recommended Resources
+
+- OPC Foundation specifications
+- open62541 documentation
+- IEC 62541 standard series
+
+---
+
+*Based on my work implementing OPC UA for ABB industrial drives.*
