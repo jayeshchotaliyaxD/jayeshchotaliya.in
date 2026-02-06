@@ -3,6 +3,8 @@ import { getProjects } from 'app/projects/utils'
 
 export const baseUrl = 'https://jayeshchotaliya.in'
 
+export const dynamic = 'force-static'
+
 export default async function sitemap() {
   // 1. Get all Blog Post URLs
   let blogs = getBlogPosts().map((post) => ({

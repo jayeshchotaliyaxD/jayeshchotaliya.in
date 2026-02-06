@@ -1,8 +1,10 @@
 import { ImageResponse } from 'next/og'
 
+export const dynamic = 'force-static'
+export const revalidate = 3600 // 1 hour
+
 export function GET(request: Request) {
-  let url = new URL(request.url)
-  let title = url.searchParams.get('title') || 'Jayesh Chotaliya | Embedded Software Engineer'
+  let title = 'Jayesh Chotaliya | Embedded Software Engineer'
 
   return new ImageResponse(
     (
