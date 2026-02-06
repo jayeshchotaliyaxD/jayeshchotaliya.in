@@ -30,6 +30,7 @@ function buildResume() {
   fs.writeFileSync(outputPath, JSON.stringify(resumeData, null, 2), 'utf-8')
 
   console.log(`✓ Resume data generated at ${outputPath}`)
+  console.log(`  - Profile summary: ${resumeData.profileSummary ? 'yes' : 'no'}`)
   console.log(`  - Experience: ${resumeData.experience.length} roles`)
   console.log(`  - Skills: ${resumeData.skills.length} categories`)
   console.log(`  - Projects: ${resumeData.projects.length} projects`)

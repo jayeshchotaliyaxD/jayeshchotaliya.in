@@ -7,9 +7,10 @@ interface AboutProps {
   currentJob: Experience
   education: Education[]
   notableProjects: string[]
+  profileSummary: string
 }
 
-export default function About({ currentJob, education, notableProjects }: AboutProps) {
+export default function About({ currentJob, education, notableProjects, profileSummary }: AboutProps) {
   // Get first bullet points as summary
   const summaryBullets = currentJob.bullets.slice(0, 2)
   const primaryEducation = education[0]
@@ -27,6 +28,12 @@ export default function About({ currentJob, education, notableProjects }: AboutP
           </span>
           <span className="text-neutral-400"> — {currentJob.location}</span>
         </p>
+
+        {profileSummary && (
+          <p className="text-neutral-300 text-sm leading-relaxed">
+            {profileSummary}
+          </p>
+        )}
         
         {/* Key highlights from current role */}
         <StaggerContainer staggerDelay={0.05} className="flex flex-col gap-1">

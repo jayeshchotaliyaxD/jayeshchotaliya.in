@@ -46,6 +46,7 @@ export interface Certification {
 
 export interface ResumeData {
   header: ResumeHeader
+  profileSummary: string
   experience: Experience[]
   skills: SkillCategory[]
   projects: Project[]

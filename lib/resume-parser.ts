@@ -16,6 +16,7 @@ import type {
 export function parseResumeTeX(content: string): ResumeData {
   return {
     header: parseHeader(content),
+    profileSummary: parseProfileSummary(content),
     experience: parseExperience(content),
     skills: parseSkills(content),
     projects: parseProjects(content),
@@ -24,6 +25,18 @@ export function parseResumeTeX(content: string): ResumeData {
     activities: parseActivities(content),
     notableProjects: parseNotableProjects(content),
   }
+}
+
+/**
+ * Parse profile summary section
+ */
+function parseProfileSummary(content: string): string {
+  const section = extractSection(content, 'Profile Summary')
+  if (!section) {
+    return ''
+  }
+
+  return cleanLatex(section)
 }
 
 /**

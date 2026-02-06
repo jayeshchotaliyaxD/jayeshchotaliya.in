@@ -29,6 +29,7 @@ export function getResumeData(): ResumeData {
         phone: '',
         linkedin: '',
       },
+      profileSummary: '',
       experience: [],
       skills: [],
       projects: [],

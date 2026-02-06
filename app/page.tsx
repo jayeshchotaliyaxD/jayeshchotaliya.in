@@ -20,6 +20,7 @@ export default function Page() {
         currentJob={currentJob} 
         education={resumeData.education}
         notableProjects={resumeData.notableProjects}
+        profileSummary={resumeData.profileSummary}
       />
       
       {/* Two-column grid for Experience + Skills */}
