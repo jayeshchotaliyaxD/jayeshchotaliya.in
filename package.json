@@ -5,7 +5,8 @@
     "predev": "tsx scripts/build-resume.ts",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy:resume": "npm run build && git add content/resume.tex public/data/resume.json && git commit -m \"Update resume\" && git push"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.1",
