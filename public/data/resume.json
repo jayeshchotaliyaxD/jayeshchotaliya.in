@@ -6,6 +6,7 @@
     "phone": "",
     "linkedin": "jayeshchotaliya"
   },
+  "profileSummary": "Embedded Systems Engineer with 2+ years of experience developing firmware and secure cloud connectivity solutions for ABB's award-winning industrial IoT gateway platform (EGW-02, Red Dot Award winner). Specialized in real-time embedded systems, industrial communication protocols (OPC UA, MQTT, CAN), and mission-critical firmware development for factory automation and drive systems. Proven track record in architecting scalable embedded Linux solutions on Yocto-based platforms, implementing TPM-based security, and delivering 99.9% uptime systems. Expert in C/C++, ARM Cortex-M, and end-to-end embedded development from bare-metal to cloud integration, with strong focus on performance optimization and industrial-grade reliability. % ==================== PROFESSIONAL EXPERIENCE ====================",
   "experience": [
     {
       "title": "Associate R&D Engineer - Embedded Software Engineer",
