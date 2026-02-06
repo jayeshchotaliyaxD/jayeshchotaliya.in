@@ -13,6 +13,7 @@ const playfair = Playfair({
   display: 'swap',
   variable: '--font-playfair',
   style: ['normal', 'italic'],
+  fallback: ['Georgia', 'serif'],
 })
 
 // Configure Manrope (Sans-serif)
@@ -21,6 +22,7 @@ const manrope = Manrope({
   display: 'swap',
   variable: '--font-manrope',
   style: ['normal'],
+  fallback: ['system-ui', 'sans-serif'],
 })
 
 export const metadata: Metadata = {
