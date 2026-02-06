@@ -1,0 +1,173 @@
+{
+  "header": {
+    "name": "JAYESH CHOTALIYA",
+    "location": "Bangalore, India",
+    "email": "chotaliyajayesh3@gmail.com",
+    "phone": "",
+    "linkedin": "jayeshchotaliya"
+  },
+  "experience": [
+    {
+      "title": "Associate R&D Engineer - Embedded Software Engineer",
+      "company": "ABB Global Industries and Services Pvt. Ltd.",
+      "location": "Bangalore, India",
+      "period": "September 2023 -- Present",
+      "bullets": [
+        "Architected secure cloud connectivity for industrial drives using TPM and certificate authentication, enabling predictive maintenance and reducing downtime by 30%",
+        "Engineered firmware modules on LmP OS (Yocto-based) for real-time data exchange across DDCS, Phloem-eth, and OPC UA protocols",
+        "Developed OPC UA server/client modules for standardized industrial equipment data exchange and real-time drive monitoring",
+        "Designed modular architecture with MQTT/ZeroMQ message-based IPC, improving maintainability and scalability",
+        "Created multithreaded data aggregation pipelines for telemetry and events, optimizing memory and reducing bandwidth",
+        "Implemented Azure IoT Hub integration with device provisioning, twin sync, and secure file upload for remote management",
+        "Performed system bring-up, UART/I2C debugging, and collaborated with firmware/hardware teams for integration",
+        "Established test frameworks with Google Test and CMake achieving 80%+ coverage; integrated HIL testing",
+        "Optimized data pipelines achieving 40% throughput improvement and 99.9% uptime through robust error handling"
+      ],
+      "technologies": [
+        "C++17",
+        "C",
+        "Boost",
+        "nlohmann_json",
+        "LmP OS",
+        "Yocto",
+        "OPC UA",
+        "MQTT",
+        "TPM",
+        "ZeroMQ",
+        "Azure IoT Hub",
+        "CMake",
+        "Google Test",
+        "UART",
+        "I2C"
+      ],
+      "isCurrent": true
+    },
+    {
+      "title": "Embedded Systems Trainee",
+      "company": "Vector India Pvt. Ltd.",
+      "location": "Bangalore, India",
+      "period": "March 2023 -- September 2023",
+      "bullets": [
+        "Built bare-metal applications and device drivers on ARM Cortex-M using Embedded C and CMSIS",
+        "Developed RTOS schedulers and ISR-driven applications for GPIO, UART, ADC, and CAN peripherals",
+        "Gained expertise in memory-mapped I/O, register programming, and debugging with Keil MDK, Proteus, GDB",
+        "Worked with Linux cross-compilation toolchains (GCC ARM) and embedded development workflows"
+      ],
+      "technologies": [
+        "Embedded C",
+        "ARM Cortex-M",
+        "CMSIS",
+        "FreeRTOS",
+        "Keil MDK",
+        "Proteus",
+        "GDB",
+        "UART",
+        "I2C",
+        "SPI",
+        "CAN"
+      ],
+      "isCurrent": false
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "skills": [
+        "C",
+        "C++ (C++11/14/17",
+        "STL",
+        "Boost)",
+        "Python",
+        "Shell Scripting",
+        "Embedded C"
+      ]
+    },
+    {
+      "category": "Embedded Systems",
+      "skills": [
+        "ARM Cortex-M",
+        "LPC2129",
+        "STM32",
+        "Bare-metal",
+        "RTOS (FreeRTOS)",
+        "Embedded Linux",
+        "Yocto",
+        "LmP OS"
+      ]
+    },
+    {
+      "category": "Protocols & Interfaces",
+      "skills": [
+        "OPC UA",
+        "MQTT",
+        "ZeroMQ",
+        "Modbus",
+        "CAN 2.0A",
+        "UART",
+        "I2C",
+        "SPI",
+        "GPIO",
+        "TCP/IP"
+      ]
+    },
+    {
+      "category": "Tools & Frameworks",
+      "skills": [
+        "Git",
+        "CMake",
+        "GCC",
+        "Keil MDK",
+        "Proteus",
+        "GDB",
+        "Google Test",
+        "Docker",
+        "CI/CD",
+        "CMSIS",
+        "nlohmann"
+      ]
+    },
+    {
+      "category": "Cloud & Security",
+      "skills": [
+        "Azure IoT Hub",
+        "Device Provisioning",
+        "TPM",
+        "Certificate Authentication",
+        "Secure Boot",
+        "TLS/SSL"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "C Compiler -- Preprocessor Stage",
+      "organization": "Vector India Pvt. Ltd.",
+      "date": "August 2023",
+      "bullets": [
+        "Designed GCC-compliant preprocessor in C for macro expansion, conditional compilation, and header inclusion",
+        "Optimized lexical analysis achieving 25% reduction in preprocessing time through efficient hash tables"
+      ]
+    },
+    {
+      "name": "Body Control Module -- CAN Protocol (ARM LPC2129)",
+      "organization": "Vector India Pvt. Ltd.",
+      "date": "July 2023",
+      "bullets": [
+        "Implemented BCM using CAN 2.0A on ARM7-based LPC2129 for automotive applications",
+        "Developed interrupt-driven firmware to control vehicle LEDs via CAN with bit timing and bus arbitration"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering in Electronics and Communication",
+      "grade": "CGPA: 7.92/10",
+      "period": "July 2016 -- Aug 2020",
+      "institution": "L.D. College of Engineering, Ahmedabad, India",
+      "location": "India"
+    }
+  ],
+  "certifications": [],
+  "activities": [],
+  "notableProjects": []
+}

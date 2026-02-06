@@ -1,23 +1,44 @@
-import path from 'path'
-import { loadResumeFromFile } from './resume-parser'
 import type { ResumeData } from './resume-types'
 
 // Cache the parsed resume data
 let cachedResume: ResumeData | null = null
 
 /**
- * Get resume data - loads and parses LaTeX file at build time
- * Results are cached for the duration of the build
+ * Get resume data - imports pre-generated JSON from build time
+ * This works with static hosting (GitHub Pages, etc.)
  */
 export function getResumeData(): ResumeData {
   if (cachedResume) {
     return cachedResume
   }
 
-  const resumePath = path.join(process.cwd(), 'content', 'resume.tex')
-  cachedResume = loadResumeFromFile(resumePath)
-  
-  return cachedResume
+  // Import the pre-generated resume JSON
+  // This file is created by scripts/build-resume.ts during the build process
+  try {
+    const resumeJson = require('../public/data/resume.json') as ResumeData
+    cachedResume = resumeJson
+    return resumeJson
+  } catch (error) {
+    console.error('Failed to load resume data:', error)
+    // Return empty structure as fallback
+    const fallback: ResumeData = {
+      header: {
+        name: 'Jayesh Chotaliya',
+        location: 'Bangalore, India',
+        email: '',
+        phone: '',
+        linkedin: '',
+      },
+      experience: [],
+      skills: [],
+      projects: [],
+      education: [],
+      certifications: [],
+      activities: [],
+      notableProjects: [],
+    }
+    return fallback
+  }
 }
 
 /**

@@ -1,6 +1,8 @@
 {
   "private": true,
   "scripts": {
+    "prebuild": "tsx scripts/build-resume.ts",
+    "predev": "tsx scripts/build-resume.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
@@ -24,5 +26,8 @@
     "sugar-high": "^0.6.0",
     "tailwindcss": "4.0.0-alpha.13",
     "typescript": "^5"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
   }
 }
