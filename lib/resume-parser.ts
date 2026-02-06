@@ -36,7 +36,9 @@ function parseProfileSummary(content: string): string {
     return ''
   }
 
-  return cleanLatex(section)
+  const withoutComments = section.replace(/^%.*$/gm, '').trim()
+  const firstParagraph = withoutComments.split(/\n\s*\n/)[0] || ''
+  return cleanLatex(firstParagraph)
 }
 
 /**
@@ -44,6 +46,7 @@ function parseProfileSummary(content: string): string {
  */
 function cleanLatex(text: string): string {
   return text
+    .replace(/^%.*$/gm, '') // Remove LaTeX comment lines
     .replace(/\\textbf\{([^}]*)\}/g, '$1')
     .replace(/\\textit\{([^}]*)\}/g, '$1')
     .replace(/\\href\{[^}]*\}\{([^}]*)\}/g, '$1')
