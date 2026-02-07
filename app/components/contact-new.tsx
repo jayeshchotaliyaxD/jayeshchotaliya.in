@@ -3,7 +3,7 @@
 import { AnimatedSection } from 'lib/animations'
 import type { ResumeHeader } from 'lib/resume-types'
 import { SiLinkedin, SiGithub } from 'react-icons/si'
-import { HiOutlineMail, HiOutlineDocumentDownload } from 'react-icons/hi'
+import { HiOutlineMail } from 'react-icons/hi'
 
 interface ContactProps {
   header: ResumeHeader
@@ -55,7 +55,8 @@ export default function Contact({ header }: ContactProps) {
             </span>
           </a>
           
-          {/* Resume Download */}
+          {/* Resume Download - Commented out, download link was broken */}
+          {/* 
           <a
             href="/resume.pdf"
             target="_blank"
@@ -65,6 +66,7 @@ export default function Contact({ header }: ContactProps) {
             <HiOutlineDocumentDownload className="w-4 h-4" />
             Resume
           </a>
+          */}
         </div>
         
         <p className="text-neutral-500 text-xs mt-2">
