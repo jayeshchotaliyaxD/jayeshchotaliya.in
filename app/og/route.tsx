@@ -8,7 +8,7 @@ export function GET(request: Request) {
 
   return new ImageResponse(
     (
-      <div tw="flex flex-col w-full h-full items-center justify-center bg-neutral-950">
+      <div tw="flex flex-col w-full h-full items-center justify-center" style={{ backgroundColor: '#0a0a0a' }}>
         <div tw="flex flex-col w-full py-12 px-12 items-start justify-center">
           <h2 tw="flex flex-col text-5xl font-bold tracking-tight text-white mb-4">
             {title}

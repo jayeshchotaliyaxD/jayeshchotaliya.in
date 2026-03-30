@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { AnimatedPostsList } from './posts-animated'
 
 type BlogPostsProps = {
   limit?: number
@@ -15,39 +16,25 @@ export function BlogPosts({ limit }: BlogPostsProps) {
     return 1
   })
 
-  // 1. Calculate if we actually need the button
-  // It only shows if a limit exists AND we have more posts than that limit
   const showViewAll = limit && allBlogs.length > limit
-
-  // 2. Slice the array
   let displayedBlogs = limit ? sortedBlogs.slice(0, limit) : sortedBlogs
+
+  const posts = displayedBlogs.map((post) => ({
+    slug: post.slug,
+    title: post.metadata.title,
+    date: formatDate(post.metadata.publishedAt, false),
+  }))
 
   return (
     <div>
-      {displayedBlogs.map((post) => (
-        <Link
-          key={post.slug}
-          className="flex flex-col gap-figma-inside-gap group"
-          href={`/blog/${post.slug}`}
-        >
-          <div className="w-full flex flex-row md:flex-row items-center space-x-0 md:space-x-2">
-            <p className="text-neutral-600 dark:text-neutral-400 mr-4 md:mr-10 tabular-nums shrink-0">
-              {formatDate(post.metadata.publishedAt, false)}
-            </p>
-            <p className="text-neutral-900 dark:text-neutral-100 tracking-tight underline hover:decoration-neutral-400 underline-offset-4">
-              {post.metadata.title}
-            </p>
-          </div>
-        </Link>
-      ))}
+      <AnimatedPostsList posts={posts} />
 
-      {/* 3. Use the calculated boolean here */}
       {showViewAll && (
         <Link
           href="/blog"
-          className="inline-flex items-center underline hover:decoration-neutral-400 underline-offset-4"
+          className="inline-flex items-center mt-4 text-accent hover:text-accent-hover transition-colors text-sm"
         >
-          Read all writings
+          Read all writings →
         </Link>
       )}
     </div>

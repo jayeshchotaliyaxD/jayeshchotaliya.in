@@ -1,4 +1,5 @@
 import { Projects } from 'app/components/projects'
+import { FadeInView } from 'lib/animations'
 
 export const metadata = {
   title: 'Projects',
@@ -8,7 +9,9 @@ export const metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold mb-8">Projects</h1>
+      <FadeInView>
+        <h1 className="font-semibold text-2xl mb-8">Projects</h1>
+      </FadeInView>
       <Projects />
     </section>
   )

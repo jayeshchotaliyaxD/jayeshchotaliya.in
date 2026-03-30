@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
+import { Navbar } from './components/nav'
 import { baseUrl } from './sitemap'
 import { Manrope, Playfair, Playfair_Display } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -96,13 +97,14 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'dark text-white bg-neutral-950',
+        'dark text-white bg-[#0a0a0a]',
         playfair.variable,
         manrope.variable
       )}
     >
-      <body className={`font-serif antialiased max-w-2xl mx-4 mt-8 lg:mx-auto text-sm tracking-tight`}>
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+      <body className={`font-serif antialiased max-w-5xl mx-6 sm:mx-8 mt-8 lg:mx-auto text-sm tracking-tight`}>
+        <Navbar />
+        <main className="flex-auto min-w-0 mt-6 pt-16 flex flex-col px-4 sm:px-6 lg:px-8 md:px-0">
           {children}
           <Footer />
           <Analytics />
