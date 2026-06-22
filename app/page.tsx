@@ -1,38 +1,42 @@
 import { getResumeData, getAllTechnologies } from 'lib/get-resume'
-import MainHeader from './components/header-new'
-import About from './components/about'
-import ExperienceSection from './components/experience'
-import Skills from './components/skills'
-import ProjectsResume from './components/projects-resume'
-import Education from './components/education'
-import Certifications from './components/certifications'
-import Contact from './components/contact-new'
-import { PageTransition } from 'lib/animations'
+import ScrollyCanvas from './components/scrolly-canvas'
+import AboutCinematic from './components/about-cinematic'
+import SkillsArsenal from './components/skills-arsenal'
+import Journey from './components/journey'
+import ContactCinematic from './components/contact-cinematic'
+import Dock from './components/dock'
+import WorkGrid from './components/work-grid'
 
 export default function Page() {
-  const resumeData = getResumeData()
+  const resume = getResumeData()
   const headerSkills = getAllTechnologies().slice(0, 8)
-  const currentJob = resumeData.experience.find((exp) => exp.isCurrent) || resumeData.experience[0]
+  const currentJob = resume.experience.find((exp) => exp.isCurrent) || resume.experience[0]
+
+  const tagline = `${resume.profileSummary.split('. ')[0]}.`
+  const techCount = getAllTechnologies().length
+  const years = Math.max(1, new Date().getFullYear() - 2023)
+
+  const stats = [
+    { value: `${years}+`, label: 'Years in embedded' },
+    { value: `${techCount}+`, label: 'Technologies' },
+    { value: '99.9%', label: 'Uptime delivered' },
+    { value: 'Red Dot', label: 'Award-winning gateway' },
+  ]
 
   return (
-    <PageTransition className="flex flex-col gap-16 md:gap-24">
-      <MainHeader header={resumeData.header} skills={headerSkills} currentJob={currentJob} />
-      <About
-        currentJob={currentJob}
-        education={resumeData.education}
-        notableProjects={resumeData.notableProjects}
-        profileSummary={resumeData.profileSummary}
+    <>
+      <ScrollyCanvas
+        name={resume.header.name}
+        title={currentJob.title}
+        skills={headerSkills}
+        tagline={tagline}
       />
-      <ExperienceSection experiences={resumeData.experience} />
-      <Skills skills={resumeData.skills} />
-      <Education education={resumeData.education} />
-      <ProjectsResume projects={resumeData.projects} />
-      <Certifications
-        certifications={resumeData.certifications}
-        activities={resumeData.activities}
-        notableProjects={resumeData.notableProjects}
-      />
-      <Contact header={resumeData.header} />
-    </PageTransition>
+      <WorkGrid projects={resume.projects} />
+      <AboutCinematic profileSummary={resume.profileSummary} stats={stats} />
+      <SkillsArsenal skills={resume.skills} />
+      <Journey experience={resume.experience} education={resume.education} />
+      <ContactCinematic header={resume.header} />
+      <Dock />
+    </>
   )
 }
